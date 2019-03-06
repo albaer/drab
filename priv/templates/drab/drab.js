@@ -107,6 +107,12 @@
       var p = {};
       for (var i = 0; i < Drab.additional_payloads.length; i++) {
         var fx = Drab.additional_payloads[i];
+        /////////////// Temporary patch from https://github.com/grych/drab/issues/184
+        var event = event
+        if (typeof(event) == "undefined") {
+          event = new Event('click');
+        }
+        //////////////
         p = Object.assign(p, fx(null, event));
       }
       payload = Object.assign(p, payload);
